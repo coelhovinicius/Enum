@@ -45,11 +45,34 @@ AVISO IMPORTANTE SOBRE CONVERSAO DE STRING
  OrderStatus os;
  Enum.TryParse("Delivered", out os);
 
+ Notacao UML (visualizacao mais clara):
+ - Esteriotipo: <<enum>> - "enum" e uma informacao adicional customizavel. No caso, foi colocado para indicar que 
+   o tipo e uma enumeracao;
+ - Nome da clase: OrderStatus;
+ - Constantes:
+	> - PENDING_PAYMENT : int = 0
+	> - PROCESSING : int = 1
+	> - SHIPPED : int = 2
+	> - DELIVERED : int = 3
+
+ Outra forma de Notacao UML (forma mais detalhada, porem, de visualizacao menos clara):
+ - Esteriotipo: <<enum>> - "enum" e uma informacao adicional customizavel. No caso, foi colocado para indicar que 
+   o tipo e uma enumeracao;
+ - Nome da clase: OrderStatus;
+ - Constantes:
+	> - <<enum constant>> PENDING_PAYMENT : int = 0
+	> - <<enum constant>> PROCESSING : int = 1
+	> - <<enum constant>> SHIPPED : int = 2
+	> - <<enum constant>> DELIVERED : int = 3
+
+
 CODIGO PARA A AULA: https://github.com/acenelio/enum1-csharp
 
 */
 
 using System;
+using Aula115_Enumeracoes.Entities; // Necessario para se utilizar outros NAMESPACEs
+using Aula115_Enumeracoes.Entities.Enums;
 
 namespace Aula115_Enumeracoes
 {
@@ -57,9 +80,25 @@ namespace Aula115_Enumeracoes
     {
         static void Main(string[] args)
         {
+            Order order = new Order
+            {
+                Id = 1080,
+                Moment = DateTime.Now,
+                Status = OrderStatus.PendingPayment
+            };
 
-            
+            Console.WriteLine(order);
+            Console.WriteLine();
 
-        }
+			//Conversao de Enum para String
+			string txt = OrderStatus.PendingPayment.ToString();
+
+			// Conversao de String para Enum
+			OrderStatus os = Enum.Parse<OrderStatus>("Delivered"); /* O nome entre parenteses deve ser igual ao da 
+			                                                        * classe OrderStatus */
+
+			Console.WriteLine(txt);
+			Console.WriteLine(os);
+		}
     }
 }
