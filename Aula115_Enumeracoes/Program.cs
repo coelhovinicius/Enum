@@ -65,7 +65,6 @@ AVISO IMPORTANTE SOBRE CONVERSAO DE STRING
 	> - <<enum constant>> SHIPPED : int = 2
 	> - <<enum constant>> DELIVERED : int = 3
 
-
 CODIGO PARA A AULA: https://github.com/acenelio/enum1-csharp
 
 */
@@ -90,15 +89,15 @@ namespace Aula115_Enumeracoes
             Console.WriteLine(order);
             Console.WriteLine();
 
-			//Conversao de Enum para String
-			string txt = OrderStatus.PendingPayment.ToString();
+            //Conversao de Enum para String
+            string txt = OrderStatus.PendingPayment.ToString();
 
-			// Conversao de String para Enum
-			OrderStatus os = Enum.Parse<OrderStatus>("Delivered"); /* O nome entre parenteses deve ser igual ao da 
+            // Conversao de String para Enum
+            OrderStatus os = Enum.Parse<OrderStatus>("Delivered"); /* O nome entre parenteses deve ser igual ao da 
 			                                                        * classe OrderStatus */
 
-			Console.WriteLine(txt);
-			Console.WriteLine(os);
-		}
+            Console.WriteLine(txt);
+            Console.WriteLine(os);
+        }
     }
 }
